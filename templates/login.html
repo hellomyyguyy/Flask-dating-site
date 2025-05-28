@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="form-container animate__animated animate__fadeInUp">
+        <h1>Login to the Wild Side</h1>
+        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+            <input type="text" name="username" placeholder="Username" required class="input-field hvr-grow">
+            <input type="password" name="password" placeholder="Password" required class="input-field hvr-grow">
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Need an account? <a href="{{ url_for('register') }}" class="link hvr-underline-from-center">Sign up here</a></p>
+    </div>
+{% endblock %}

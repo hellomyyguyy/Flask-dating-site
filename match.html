@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="match-container animate__animated animate__fadeIn">
+        {% if user %}
+            <div class="profile-card">
+                <h1 class="username animate__animated animate__bounceIn">{{ user.username }}</h1>
+                <p class="bio">{{ user.bio }}</p>
+                {% if distance %}
+                    <p class="distance">Distance: {{ distance|round(2) }} km</p>
+                {% else %}
+                    <p class="distance">Distance: Unknown</p>
+                {% endif %}
+                <div class="image-gallery">
+                    {% for image in user.images %}
+                        <img src="{{ url_for('static', filename='uploads/' + image.image_path) }}" alt="Profile" class="profile-pic hvr-pulse-grow">
+                    {% endfor %}
+                </div>
+                <form method="POST" class="match-actions">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button type="submit" name="action" value="like" class="btn like-btn">Like</button>
+                    <button type="submit" name="action" value="dislike" class="btn hvr-bounce-to-left">Dislike</button>
+                </form>
+            </div>
+        {% else %}
+            <p class="no-users animate__animated animate__shakeX">No more wild souls to match with!</p>
+        {% endif %}
+    </div>
+{% endblock %}

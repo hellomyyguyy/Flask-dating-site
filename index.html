@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero animate__animated animate__zoomIn">
+        <h1>Welcome to WildLove</h1>
+        <p class="tagline">Unleash Your Heart in the Wild!</p>
+        <div class="actions">
+            <a href="{{ url_for('register') }}" class="btn hvr-bounce-in animate__animated animate__pulse animate__infinite">Create Profile</a>
+            <a href="{{ url_for('login') }}" class="btn hvr-bounce-in animate__animated animate__pulse animate__infinite">Login</a>
+        </div>
+    </div>
+{% endblock %}

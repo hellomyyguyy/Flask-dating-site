@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="form-container animate__animated animate__fadeInUp">
+        <h1>{{ 'Edit Your Wild Profile' if editing else 'Join the WildLove Pack' }}</h1>
+        <form method="POST" enctype="multipart/form-data" class="profile-form">
+            {% if not editing %}
+                <input type="text" name="username" placeholder="Username" required class="input-field hvr-grow">
+                <input type="password" name="password" placeholder="Password" required class="input-field hvr-grow">
+            {% endif %}
+            <textarea name="bio" placeholder="Roar about yourself..." required class="input-field hvr-grow">{{ bio }}</textarea>
+            <div class="image-upload">
+                <label for="images">Show Off Your Wild Side!</label>
+                <input type="file" name="images" id="images" multiple {{ '' if editing else 'required' }} class="input-file">
+                {% if current_user and current_user.images %}
+                    <div class="image-gallery">
+                        {% for image in current_user.images %}
+                            <img src="{{ url_for('static', filename='uploads/' + image.image_path) }}" alt="Profile" class="profile-pic hvr-float">
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn">{{ 'Update Profile' if editing else 'Join Now' }}</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hub-container animate__animated animate__zoomIn">
+        <h1>Welcome Back, {{ current_user.username }}!</h1>
+        <p class="tagline">Ready for some wild action?</p>
+        <div class="actions">
+            <a href="{{ url_for('match') }}" class="btn hvr-bounce-in">Find Matches</a>
+            <a href="{{ url_for('messages') }}" class="btn hvr-bounce-in">View Messages</a>
+            <a href="{{ url_for('register') }}" class="btn hvr-bounce-in">Edit Profile</a>
+            <a href="{{ url_for('logout') }}" class="btn hvr-bounce-in">Logout</a>
+        </div>
+    </div>
+{% endblock %}
